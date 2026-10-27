@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jiaqi Wang — Marketing, Data & Technology</title>
+<style>
+:root {
+  --site-primary: #263F38;
+  --site-secondary: #E8EDE5;
+  --site-background: #F7F7F2;
+  --site-on-primary: #FFFFFF;
+  --site-on-secondary: #263F38;
+  --site-on-background: #202824;
+  --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-font-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  color-scheme: light dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: var(--site-font-body); background: light-dark(#F7F7F2, #151a18); color: light-dark(#202824, #eef2ed); line-height: 1.6; }
+#app { background-color: var(--site-background); color: var(--site-on-background); min-height: 100vh; border-radius: 0; }
+a { color: inherit; }
+.nav { display:flex; align-items:center; justify-content:space-between; max-width:1120px; margin:auto; padding:calc(22px * var(--site-spacing-scale)) 28px; }
+.brand { font-weight:750; letter-spacing:-.04em; }
+.navlinks { display:flex; gap:24px; font-size:13px; color:#5a665e; }
+.navlinks a { text-decoration:none; }
+.hero { background:var(--site-primary); color:var(--site-on-primary); padding:clamp(64px, 10vw, 118px) 28px 86px; }
+.hero-inner { max-width:1064px; margin:auto; display:grid; grid-template-columns:1.3fr .7fr; gap:56px; align-items:end; }
+.eyebrow { font-size:12px; text-transform:uppercase; letter-spacing:.17em; font-weight:700; opacity:.75; }
+h1 { font-family:var(--site-font-heading); font-size:calc(clamp(44px, 7vw, 78px) * var(--site-heading-scale)); line-height:.98; letter-spacing:-.065em; margin:20px 0 24px; max-width:760px; }
+.hero p { max-width:630px; font-size:clamp(16px, 2vw, 19px); color:#e0e9e2; }
+.hero-note { border-left:1px solid #82988c; padding:8px 0 8px 22px; color:#e0e9e2; font-size:14px; }
+.hero-note strong { display:block; font-size:11px; letter-spacing:.12em; text-transform:uppercase; margin-bottom:10px; color:#b9cbbf; }
+main { max-width:1064px; margin:auto; padding:0 28px 72px; }
+.section { padding:74px 0 12px; }
+.section-head { display:flex; justify-content:space-between; gap:24px; align-items:baseline; border-bottom:1px solid #d8ddd5; padding-bottom:15px; margin-bottom:28px; }
+h2 { margin:0; font-size:calc(28px * var(--site-heading-scale)); letter-spacing:-.045em; }
+.kicker { font-size:12px; color:#6b776f; text-transform:uppercase; letter-spacing:.12em; }
+.intro { max-width:760px; font-size:17px; color:#4e5b53; }
+.grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+.card { background:#fff; border:1px solid #e2e6df; border-radius:calc(16px * var(--site-radius-scale)); padding:26px; }
+.card-top { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; }
+.tag { font-size:11px; text-transform:uppercase; letter-spacing:.1em; background:var(--site-secondary); color:#314b3e; border-radius:999px; padding:6px 10px; white-space:nowrap; }
+.card h3 { font-size:21px; line-height:1.2; letter-spacing:-.035em; margin:14px 0 7px; }
+.meta { color:#69756c; font-size:13px; }
+.card p { color:#4e5b53; font-size:14px; }
+.card ul { padding-left:19px; color:#4e5b53; font-size:14px; }
+.card li { margin:8px 0; }
+.metric { background:#e8ede5; border-radius:12px; padding:16px; margin-top:18px; }
+.metric strong { display:block; color:#263f38; font-size:28px; letter-spacing:-.05em; line-height:1.2; }
+.metric span { color:#53665a; font-size:12px; }
+.project { display:grid; grid-template-columns:.65fr 1.35fr; gap:28px; align-items:start; }
+.project-aside { background:#263f38; color:#fff; padding:26px; border-radius:calc(16px * var(--site-radius-scale)); min-height:240px; }
+.project-aside .big { font-size:52px; line-height:1; letter-spacing:-.07em; font-weight:750; margin:25px 0 12px; }
+.project-aside p { color:#d7e3d9; font-size:13px; }
+.project-detail h3 { font-size:23px; margin:0 0 8px; letter-spacing:-.04em; }
+.project-detail p, .project-detail li { color:#4e5b53; }
+.pills { display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+.pill { border:1px solid #d7ddd5; border-radius:999px; padding:7px 11px; font-size:12px; color:#4f5c53; }
+.skills { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+.skill { background:#fff; border:1px solid #e2e6df; border-radius:calc(14px * var(--site-radius-scale)); padding:20px; }
+.skill h3 { font-size:14px; margin:0 0 10px; }
+.skill p { font-size:13px; color:#59665d; margin:0; }
+.contact { background:var(--site-secondary); border-radius:calc(18px * var(--site-radius-scale)); padding:clamp(28px, 5vw, 52px); display:flex; justify-content:space-between; gap:24px; align-items:center; margin-top:76px; }
+.contact h2 { max-width:550px; }
+.contact p { color:#53665a; }
+.button { display:inline-block; padding:13px 18px; border-radius:999px; background:var(--site-primary); color:white; text-decoration:none; font-size:13px; font-weight:650; white-space:nowrap; }
+footer { max-width:1064px; margin:auto; padding:26px 28px 40px; display:flex; justify-content:space-between; color:#758078; font-size:12px; border-top:1px solid #d8ddd5; }
+@media(max-width:720px) { .navlinks { gap:12px; font-size:11px; } .hero-inner,.project { grid-template-columns:1fr; gap:24px; } .hero-note { max-width:440px; } .grid,.skills { grid-template-columns:1fr; } .section { padding-top:54px; } .section-head { display:block; } .kicker { display:block; margin-top:8px; } .contact { align-items:flex-start; flex-direction:column; } }
+@media(prefers-color-scheme:dark) { .navlinks,.meta,.kicker,footer { color:#b1bdb4; } .card,.skill { background:#202824; border-color:#39443d; } .card p,.card ul,.project-detail p,.project-detail li,.skill p,.intro { color:#c3cdc5; } .section-head,footer { border-color:#39443d; } .metric { background:#2c3b31; } .metric strong { color:#e8f0e8; } .metric span { color:#c2d2c4; } .pill { color:#d1dbd3; border-color:#465249; } .contact { background:#2c3b31; } .contact p { color:#c2d2c4; } }
+</style>
+</head>
+<body>
+<div id="app">
+  <nav class="nav" aria-label="Main navigation">
+    <div class="brand">JIAQI WANG<span style="color:#d63372">.</span></div>
+    <div class="navlinks"><a href="#work">Experience</a><a href="#project">Project</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div>
+  </nav>
+  <header class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow">Marketing · Data · Technology</div>
+        <h1>Turning data into better marketing decisions.</h1>
+        <p>I'm a Computer Science + Advertising student at the University of Illinois Urbana-Champaign, interested in the intersection of performance marketing, analytics, and AI-enabled workflows.</p>
+      </div>
+      <div class="hero-note"><strong>Currently focused on</strong>Performance marketing · Marketing analytics · Applied AI<br><br>Based in Champaign, Illinois</div>
+    </div>
+  </header>
+  <main>
+    <section class="section" id="about">
+      <div class="section-head"><h2>About</h2><span class="kicker">A data-minded marketer</span></div>
+      <p class="intro">My experience spans digital media buying and financial audit, giving me practice in both performance-focused decision-making and detail-oriented analysis. I enjoy finding patterns in data, translating them into actionable recommendations, and connecting technical tools with real business needs.</p>
+    </section>
+    <section class="section" id="work">
+      <div class="section-head"><h2>Experience</h2><span class="kicker">2026 · Internships</span></div>
+      <div class="grid">
+        <article class="card">
+          <div class="card-top"><span class="tag">Performance Marketing</span><span class="meta">May–Aug 2026</span></div>
+          <h3>Media Buying Intern</h3><div class="meta">Publicis Groupe · Nanjing, China</div>
+          <p>Supported digital advertising campaigns for Friso across Tencent's UD platform, using product-level performance data to guide spending decisions.</p>
+          <ul><li>Identified early budget depletion during a low-conversion period and proposed shifting delivery toward peak conversion hours.</li><li>Tracked spend, conversions, and ROAS in Excel pivot tables and weekly reports across two stores and five products.</li><li>Helped plan budget changes for the 618 shopping festival, including daily spend scaling.</li></ul>
+          <div class="metric"><strong>~2–3× → 7–8×</strong><span>Campaign ROAS observed after the team adopted the timing adjustment</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="tag">Data & Reporting</span><span class="meta">Aug–Sep 2026</span></div>
+          <h3>Audit Intern</h3><div class="meta">Ernst & Young (EY) · Beijing, China</div>
+          <p>Supported interim-report review work for a major state-owned bank, combining careful document review with structured spreadsheet analysis.</p>
+          <ul><li>Checked report figures against workpapers and reconciled classifications under IFRS and China Accounting Standards.</li><li>Coordinated document collection and discrepancy tracking across approximately 14 branches in mainland China and Hong Kong.</li><li>Used Excel VLOOKUP and XLOOKUP to compile loan reference numbers and outstanding balances.</li></ul>
+        </article>
+      </div>
+    </section>
+    <section class="section" id="project">
+      <div class="section-head"><h2>Selected Project</h2><span class="kicker">Python · Data collection</span></div>
+      <div class="project">
+        <div class="project-aside"><div class="eyebrow">Personal project</div><div class="big">246</div><p>Inventory changes logged during a 20-hour monitoring run</p></div>
+        <div class="project-detail">
+          <h3>K-pop Album Sales Tracker</h3>
+          <div class="meta">Python · pandas · Regular expressions · Excel</div>
+          <p>Built a tool to monitor stock changes for seven member-version albums and one group edition on a Chinese e-commerce platform. The project explored how noisy inventory signals could be turned into a more useful estimate of paid sales.</p>
+          <ul><li>Located stock data through Chrome DevTools and parsed inconsistently encoded HTML with regular expressions.</li><li>Polled inventory every 10 seconds and recorded 246 stock changes in Excel using pandas.</li><li>Filtered inventory rebounds associated with unpaid orders to estimate purchase thresholds for limited-entry fan events.</li></ul>
+          <div class="pills"><span class="pill">Python</span><span class="pill">pandas</span><span class="pill">Data cleaning</span><span class="pill">Automation</span><span class="pill">Decision support</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="skills">
+      <div class="section-head"><h2>Skills & Education</h2><span class="kicker">Technical foundation</span></div>
+      <div class="skills">
+        <div class="skill"><h3>Programming</h3><p>Python, C, C++, Java, SQL</p></div>
+        <div class="skill"><h3>Data & Tools</h3><p>Excel pivot tables, VLOOKUP/XLOOKUP, pandas, Microsoft Office</p></div>
+        <div class="skill"><h3>Marketing & Analytics</h3><p>Media buying, budget pacing, conversion analysis, ROAS tracking, campaign reporting</p></div>
+      </div>
+      <div class="card" style="margin-top:16px; display:flex; justify-content:space-between; gap:20px; align-items:center; flex-wrap:wrap;">
+        <div><h3 style="margin:0 0 5px">University of Illinois Urbana-Champaign</h3><div class="meta">B.S. Computer Science + Advertising · Minor in Business</div></div>
+        <div style="text-align:right"><strong>3.92 / 4.00 GPA</strong><div class="meta">Expected graduation: 2028 · Dean's List</div></div>
+      </div>
+    </section>
+    <section class="contact" id="contact">
+      <div><h2>Interested in marketing, analytics, and AI?</h2><p>I'm open to opportunities where data and creative problem-solving meet.</p></div>
+      <a class="button" href="mailto:auroraw1221@outlook.com">Get in touch ↗</a>
+    </section>
+  </main>
+  <footer><span>© Jiaqi Wang</span><span>Marketing · Data · Technology</span></footer>
+</div>
+</body>
+</html>
